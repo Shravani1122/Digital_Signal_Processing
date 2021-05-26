@@ -1,0 +1,28 @@
+clear all;
+close all;
+clc;
+x=input('Enter the 1st Sequence: ');
+h=input('Enter the 2nd Sequence: ');
+N=max(length(x), length(h));
+X=calcdft(x,N);
+H=calcdft(h,N);
+Y=X.*H;
+y=ifft(Y,N);
+figure;
+subplot(3,1,1);24
+stem(0:length(x)-1,x);
+xlabel('Time');
+ylabel('Amplitude');
+title('1st seq');
+subplot(3,1,2);
+stem(0:length(h)-1, h);
+xlabel('Time');
+ylabel('Amplitude');
+title('2nd seq');
+subplot(3,1,3);
+stem(0:N-1,real(y));
+xlabel('Time');
+ylabel('Amplitude');
+title('circular convolution');
+disp('circular convolution');
+disp(real(y));
